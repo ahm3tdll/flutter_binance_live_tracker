@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/price_bloc.dart';
+import 'view/price_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Blocnance',
-      home: Scaffold(),
-      );
+      home: BlocProvider(
+        create: (_) => PriceBloc(),
+        child: const PriceScreen(),
+      ),
+    );
   }
 }
-

@@ -24,6 +24,7 @@ class PriceBloc extends Bloc<PriceEvent, PriceState> {
     );
 
     _subscription = _channel.stream.listen((message) {
+      print("🔵 Gelen mesaj: $message");
       final jsonData = jsonDecode(message);
       final price = PriceModel.fromJson(jsonData);
       add(PriceUpdated(price));

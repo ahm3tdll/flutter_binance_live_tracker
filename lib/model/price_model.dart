@@ -13,8 +13,8 @@ import 'package:equatable/equatable.dart';
     final data = json['data'];
     return PriceModel(
       symbol: data['s'],
-      price: data['p']);
-
+      price: double.parse(data['p']),
+    );
   }
   
   @override
