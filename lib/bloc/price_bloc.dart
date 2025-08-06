@@ -20,7 +20,7 @@ class PriceBloc extends Bloc<PriceEvent, PriceState> {
 
   void _onStartListening(StartListening event, Emitter<PriceState> emit) {
     _channel = WebSocketChannel.connect(
-      Uri.parse('wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/usdttry@trade/eurtry@trade/xautry@trade'),
+      Uri.parse('wss://stream.binance.com:9443/stream?streams=btcusdt@trade/ethusdt@trade/dogeusdt@trade/aptusdt@trade/eurusdt@trade'),
     );
 
     _subscription = _channel.stream.listen((message) {

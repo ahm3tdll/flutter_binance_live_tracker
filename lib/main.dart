@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_binance_tracker/bloc/price_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/price_bloc.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Blocnance',
       home: BlocProvider(
-        create: (_) => PriceBloc(),
+        create: (_) => PriceBloc()..add(StartListening()),
         child: const PriceScreen(),
       ),
     );
