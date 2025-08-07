@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_binance_tracker/view/coin_detail_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/price_bloc.dart';
@@ -48,6 +49,13 @@ class PriceTile extends StatelessWidget {
                 ],
               ),
               child: ListTile(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => CoinDetailScreen(symbol: symbol)),
+                  );
+                },
                 contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 title: Text(
                   symbol.toUpperCase(),

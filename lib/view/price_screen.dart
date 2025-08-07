@@ -11,7 +11,7 @@ class PriceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
+      backgroundColor: const Color(0xFF2A2D34),
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
