@@ -4,6 +4,7 @@ import 'package:flutter_binance_tracker/bloc/chart_event.dart';
 import 'package:flutter_binance_tracker/bloc/chart_state.dart';
 import 'package:flutter_binance_tracker/widgets/chart_line.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_binance_tracker/widgets/ai_insight_card.dart';
 
 class CoinDetailScreen extends StatelessWidget {
   final String symbol;
@@ -26,32 +27,40 @@ class CoinDetailScreen extends StatelessWidget {
           ),
           backgroundColor: Colors.blueGrey[900],
         ),
-        backgroundColor: const Color(0xFF2A2D34), // Gunmetal zemin
+        backgroundColor: const Color(0xFF2A2D34),
         body: BlocBuilder<ChartBloc, ChartState>(
           builder: (context, state) {
             if (state is ChartLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is ChartLoaded) {
-              return Padding(
-                padding: const EdgeInsets.all(16),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF3A3D44), // Çerçeve rengi (bir ton açık)
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 10,
-                        offset: const Offset(0, 4),
+              return SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF3A3D44),
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.3),
+                              blurRadius: 10,
+                              offset: const Offset(0, 4),
+                            ),
+                          ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            child: ChartLine(data: state.data),
+                          ),
+                        ),
                       ),
+                      const SizedBox(height: 12),
+                      AiInsightCard(symbol: symbol, data: state.data),
                     ],
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.4,
-                      child: ChartLine(data: state.data),
-                    ),
                   ),
                 ),
               );
