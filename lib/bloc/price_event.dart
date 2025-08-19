@@ -6,6 +6,10 @@ class StartListening extends PriceEvent {}
 
 class PriceUpdated extends PriceEvent {
   final PriceModel price;
-
   PriceUpdated(this.price);
+}
+
+class ChangeQuote extends PriceEvent {
+  final String quote;
+  ChangeQuote(this.quote);
 }
